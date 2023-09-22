@@ -4,6 +4,7 @@ namespace app
     {
         public void Sum(int a, int b)
         {
+            string value = 'a'.ToString();
             Console.WriteLine(a + b);
         }
 
