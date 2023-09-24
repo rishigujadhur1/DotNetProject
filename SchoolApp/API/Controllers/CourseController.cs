@@ -31,5 +31,21 @@ namespace API.Controllers
         {
             return await context.Courses.FindAsync(id);
         }
+		
+        [HttpPatch]
+        public async Task<Course> UpdateCourseAsync(Course course)
+        {
+            context.Update(course);
+            await context.SaveChangesAsync();
+            return course;
+        }
+
+        [HttpDelete]
+        public async Task<Course> DeleteCourseAsync(Course course)
+        {
+            context.Remove(course);
+            await context.SaveChangesAsync();
+            return course;
+        }
     }
 }
