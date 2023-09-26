@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NotesAPI.Data;
-using NotesAPI.Entities;
+using NotesAPI.Entities; 
+using Microsoft.EntityFrameworkCore;
 
 namespace NotesAPI.Controllers
 {
@@ -19,27 +20,28 @@ namespace NotesAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Note>> GetNotes()
+        public async Task<ActionResult<List<Note>>> GetNotes()
         {
-            return context.Notes.ToList();
+            return await context.Notes.ToListAsync();
         }
-
+          
         [HttpPost]
-        public void AddNote([FromBody] string description)
+        public async Task<ActionResult<Note>> AddNote([FromBody] string description)
         {
             Note note = new Note(){
                 Description = description
             };
-            context.Notes.Add(note);
-            context.SaveChanges();
+            await context.Notes.AddAsync(note);
+            await context.SaveChangesAsync();
+            return note;
         }
 
         [HttpDelete]
-        public async Task<Note> DeleteNotesAsync(Note note)
+        public async Task DeleteNotesAsync([FromBody] int noteId)
         {
+            var note = await context.Notes.FindAsync(noteId);
             context.Remove(note);
-            await context.SaveChangesAsync();
-            return note;
+            await context.SaveChangesAsync(); 
         }
     }
 }
