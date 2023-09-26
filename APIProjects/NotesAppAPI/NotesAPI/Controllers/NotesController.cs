@@ -25,14 +25,17 @@ namespace NotesAPI.Controllers
         }
 
         [HttpPost]
-        public void AddNote(Note note)
+        public void AddNote([FromBody] string description)
         {
+            Note note = new Note(){
+                Description = description
+            };
             context.Notes.Add(note);
             context.SaveChanges();
         }
 
         [HttpDelete]
-        public async Task<Note> DeleteCourseAsync(Note note)
+        public async Task<Note> DeleteNotesAsync(Note note)
         {
             context.Remove(note);
             await context.SaveChangesAsync();

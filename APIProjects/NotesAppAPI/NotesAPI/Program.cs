@@ -13,6 +13,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// enable cors
+builder.Services.AddCors(cors => cors.AddPolicy("corsPolicy", build =>
+{
+    build.WithOrigins("http://127.0.0.1:5500/").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+}));
 
 
 var app = builder.Build();
@@ -23,7 +28,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("corsPolicy");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
