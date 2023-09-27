@@ -23,6 +23,9 @@ namespace TaskAPI.Controllers
 
         [HttpPost]
         public void AddNote(MyTask myTask)
-        { context.MyTasks.Add(myTask); context.SaveChanges(); }
+        {
+            context.MyTasks.Add(myTask);
+            context.SaveChanges();
+        }
     }
 }

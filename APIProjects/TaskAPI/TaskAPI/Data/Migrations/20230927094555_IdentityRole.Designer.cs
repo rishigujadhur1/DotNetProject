@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskAPI.Data;
 
@@ -10,9 +11,11 @@ using TaskAPI.Data;
 namespace TaskAPI.Data.Migrations
 {
     [DbContext(typeof(MyTaskContext))]
-    partial class MyTaskContextModelSnapshot : ModelSnapshot
+    [Migration("20230927094555_IdentityRole")]
+    partial class IdentityRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
