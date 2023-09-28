@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MovieAPI.DTOs;
@@ -66,6 +67,18 @@ namespace MovieAPI.Controllers
             };
             await userManager.CreateAsync(admin, "Pas$$w0rd");
             await userManager.AddToRolesAsync(admin, new[] { "Admin", "Member" });
+        }
+
+        [Authorize]
+        [HttpGet("currentUser")]
+        public async Task<ActionResult<UserDto>> GetCurrentUser()
+        {
+            var user = await userManager.FindByNameAsync(User.Identity.Name);
+            return new UserDto
+            {
+                Email = user.Email,
+                Token = await TokenService.GenerateToken(user)
+            };
         }
     }
 }

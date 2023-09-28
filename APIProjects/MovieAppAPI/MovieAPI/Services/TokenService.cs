@@ -33,7 +33,7 @@ namespace MovieAPI.Services
             }
 
             var key = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(Configuration["JWTSettngs:TokenKey"]));
+                Encoding.UTF8.GetBytes(Configuration["JWT:TokenKey"]));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var tokenOptions = new JwtSecurityToken(
