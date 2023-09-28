@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MovieAPI.Data;
 using MovieAPI.Entities;
+using MovieAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ builder.Services.AddIdentityCore<User>()
     .AddEntityFrameworkStores<MoviesContext>();
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
+builder.Services.AddScoped<TokenService>();
 
 var app = builder.Build();
 

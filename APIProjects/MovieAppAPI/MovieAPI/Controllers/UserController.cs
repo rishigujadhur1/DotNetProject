@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MovieAPI.DTOs;
 using MovieAPI.Entities;
+using MovieAPI.Services;
 
 namespace MovieAPI.Controllers
 {
@@ -9,21 +11,28 @@ namespace MovieAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserManager<User> userManager;
-        public UserController(UserManager<User> userManager)
+        public TokenService TokenService { get; set; }
+        public UserController(UserManager<User> userManager, TokenService tokenService)
         {
+            this.TokenService = tokenService;
             this.userManager = userManager;
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<User>> Login(string username, string password)
+        public async Task<ActionResult<UserDto>> Login(string username, string password)
         {
             var user = await userManager.FindByNameAsync(username);
             if (user == null || !await userManager.CheckPasswordAsync(user, password))
             {
                 return Unauthorized();
             }
-            return user;
+            return new UserDto
+            {
+                Email = user.Email,
+                Token = await TokenService.GenerateToken(user)
+            };
         }
+
 
         [HttpPost("register")]
         public async Task<ActionResult> Register(string username, string email, string password)
