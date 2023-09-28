@@ -56,7 +56,7 @@ namespace MovieAPI.Controllers
             return StatusCode(201);
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPost("AddAdminUser")]
         public async Task AddAdminUser(string username)
         {
