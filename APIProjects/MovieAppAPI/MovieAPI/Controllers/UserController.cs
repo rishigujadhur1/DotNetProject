@@ -20,10 +20,10 @@ namespace MovieAPI.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<UserDto>> Login(string username, string password)
+        public async Task<ActionResult<UserDto>> Login(UserAccountDto userDto)
         {
-            var user = await userManager.FindByNameAsync(username);
-            if (user == null || !await userManager.CheckPasswordAsync(user, password))
+            var user = await userManager.FindByNameAsync(userDto.Username);
+            if (user == null || !await userManager.CheckPasswordAsync(user, userDto.Password))
             {
                 return Unauthorized();
             }
@@ -33,17 +33,15 @@ namespace MovieAPI.Controllers
                 Token = await TokenService.GenerateToken(user)
             };
         }
-
-
         [HttpPost("register")]
-        public async Task<ActionResult> Register(string username, string email, string password)
+        public async Task<ActionResult> Register(UserAccountDto userDto)
         {
             var user = new User
             {
-                UserName = username,
-                Email = email
+                UserName = userDto.Username,
+                Email = userDto.Email
             };
-            var result = await userManager.CreateAsync(user, password);
+            var result = await userManager.CreateAsync(user, userDto.Password);
             if (!result.Succeeded)
             {
                 foreach (var error in result.Errors)
