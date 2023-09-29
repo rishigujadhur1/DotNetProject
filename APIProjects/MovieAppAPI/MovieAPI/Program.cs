@@ -16,6 +16,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MoviesContext>(opt => { opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")); });
+builder.Services.AddCors(cors => cors.AddPolicy("corsPolicy", build =>
+{
+    build.WithOrigins("http://127.0.0.1:3000/").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+}));
+
+
 builder.Services.AddIdentityCore<User>()
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<MoviesContext>();
@@ -36,6 +42,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddScoped<TokenService>();
 
 var app = builder.Build();
+app.UseCors("corsPolicy");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
