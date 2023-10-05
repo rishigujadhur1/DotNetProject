@@ -30,14 +30,3 @@ public IActionResult Product(int id)
 // To generate a URL for this named route:
 var url = Url.RouteUrl("ProductRoute", new { id = 123 });
 
-// Route Tokens and Template Segments:
-// 5. Answer: In route templates, route tokens are placeholders enclosed in curly braces (e.g., {controller}). Template segments are the parts of the route template between slashes (e.g., "/{controller}/{action}"). Tokens represent route parameters, while segments are static parts of the URL.
-
-// Default Routes:
-// 7. Answer: Route parameters with constraints are defined by including a constraint in the route template. For example, {id:int} is a constraint that ensures the "id" parameter only matches integer values.
-
-// Route Prefixes:
-// 8. Answer: Route prefixes are used to group related routes together under a common URL segment. For example, you can use [RoutePrefix("products")] on a controller to group all its actions under the "/products" URL prefix.
-
-// Fallback Routes:
-// 10 Answer: Areas in ASP.NET Core allow you to organize your application into modular sections. You can define routes specific to an area by including the area name in the route configuration. For example, [Area("Admin")] is used to specify an area for a controller.
