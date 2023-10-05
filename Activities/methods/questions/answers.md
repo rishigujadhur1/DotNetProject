@@ -7,8 +7,7 @@ A3. Method overloading in C# is the ability to define multiple methods in the sa
 Method Parameters:
 A4. In C#, value parameters pass a copy of the argument's value to the method, while reference parameters pass a reference to the argument. Value parameters are used when you want to work with a local copy of the data, while reference parameters allow you to modify the original data. Example:
 
-csharp
-Copy code
+```
 void ModifyValue(int value) // Value parameter
 {
 value = 42; // Changes local copy, not the original value
@@ -18,6 +17,8 @@ void ModifyReference(ref int value) // Reference parameter
 {
 value = 42; // Modifies the original value
 }
+```
+
 Return Types:
 A5. The return type of a method in C# specifies the type of value that the method will return when it is called. It indicates the kind of data that will be produced as the result of executing the method. A method with a void return type indicates that it does not return any value.
 
