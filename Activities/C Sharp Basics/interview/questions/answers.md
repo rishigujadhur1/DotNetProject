@@ -61,3 +61,71 @@ Explanation: This code attempts to access the Length property of a null array, r
 Question 24: The output is "Format exception."
 
 Explanation: This code attempts to parse the string "abc" into an integer using int.Parse, which will result in a FormatException because "abc" is not a valid integer. The catch block for FormatException is executed, and "Format exception" is printed.
+
+Question 25: The output is "Dog barks."
+
+Explanation: In this code, we create an instance of the Dog class but store it in a variable of the base class Animal. However, since MakeSound is declared as a virtual method in the base class and overridden in the derived class Dog, the method of the derived class is invoked. This is an example of polymorphism in C#.
+
+Question 26: The output is "Animal makes a sound."
+
+Explanation: In this code, we create an instance of the Dog class but store it in a variable of the base class Animal. However, the MakeSound method in the Dog class is defined using the new keyword, which hides the base class method. As a result, the method of the base class Animal is invoked when called on the myDog object.
+
+Question 27: The output is:
+
+```Animal makes a sound.
+Dog barks.
+```
+
+Explanation: In this code, we create an instance of the Dog class and call both the MakeSound method from the base class Animal and the Bark method from the derived class Dog. This demonstrates that an object of a derived class can call methods from the base class and its own methods.
+
+Question 28: The output is:
+
+```Dog barks.
+Cat meows.
+```
+
+Explanation: In this code, we create an array of Animal objects but populate it with instances of both the Dog and Cat classes. The MakeSound method is called on each object, and because it is a virtual method, the correct overridden version of the method in the respective derived class is executed. This is an example of polymorphism, where the method to be executed is determined at runtime based on the actual type of the object.
+
+Question 29: The output is:
+
+```Area: 12.566370614359172
+Area: 9.0
+```
+
+Explanation: In this code, we define an interface IShape with a method Area(). The Circle and Square classes implement this interface and provide their own implementations of the Area() method. We create an array of IShape and initialize it with instances of Circle and Square. During the iteration, the appropriate Area() method is called based on the actual type of the object, demonstrating polymorphism.
+
+Question 30: The output is:
+
+```Area: 12.566370614359172
+Area: 9.0
+```
+
+Explanation: In this code, we have a base class Shape with a virtual method Area(), and the Circle and Square classes inherit from it, providing their own implementations of the Area() method using the override keyword. During the iteration over the array of Shape objects, the appropriate Area() method is called based on the actual type of the object, demonstrating polymorphism.
+
+Question 31: The output is "Area: 12.566370614359172."
+
+Explanation: In this code, we create an instance of the Circle class and store it in a variable of the IShape interface. The Area() method of the Circle class is called on the object, and the result is printed. This demonstrates how an interface can be used to access the methods of a derived class.
+
+Question 32: The code will not compile.
+
+Explanation: In the CalculateCircumference method, the code attempts to call a Circumference method on the IShape object, but the IShape interface does not have a Circumference method. This will result in a compilation error, and the code will not run.
+
+Question 33: The output is "Private Field Value: 10."
+
+Explanation: In this code, we have a class MyClass with a private field privateField. The AccessPrivateField method, defined within the same class, can access and print the value of the private field. This demonstrates that private members are accessible within the same class.
+
+Question 34: The output is:
+
+```Public Field: 5
+Private Field: 10
+```
+
+Explanation: In this code, we have a class MyClass with both public and private fields. The AccessFields method is defined within the same class and can access and print both the public and private fields. This demonstrates that private members are accessible within the same class, and public members are accessible from outside the class.
+
+Question 35: The output is "c = 30."
+
+Explanation: This code performs addition of two integers (a and b) and assigns the result to c. The result of a + b is 30, and it is printed as part of the string "c = 30."
+
+Question 36: The output is "c = 2."
+
+Explanation: This code performs integer division of a by b, and the result is assigned to c. In C#, integer division truncates the decimal part, so the result is 2. This result is then printed as part of the string "c = 2."

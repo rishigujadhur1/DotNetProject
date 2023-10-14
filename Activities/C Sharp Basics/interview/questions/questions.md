@@ -449,4 +449,352 @@ class Program
 }
 ```
 
- 
+Question 25:
+
+```using System;
+
+class Animal
+{
+   public virtual void MakeSound()
+   {
+       Console.WriteLine("Animal makes a sound.");
+   }
+}
+
+class Dog : Animal
+{
+   public override void MakeSound()
+   {
+       Console.WriteLine("Dog barks.");
+   }
+}
+
+class Program
+{
+   static void Main()
+   {
+       Animal myDog = new Dog();
+       myDog.MakeSound();
+   }
+}
+```
+
+Question 26:
+
+```using System;
+
+class Animal
+{
+    public void MakeSound()
+    {
+        Console.WriteLine("Animal makes a sound.");
+    }
+}
+
+class Dog : Animal
+{
+    public new void MakeSound()
+    {
+        Console.WriteLine("Dog barks.");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Animal myDog = new Dog();
+        myDog.MakeSound();
+    }
+}
+```
+
+Question 27:
+
+```using System;
+
+class Animal
+{
+    public void MakeSound()
+    {
+        Console.WriteLine("Animal makes a sound.");
+    }
+}
+
+class Dog : Animal
+{
+    public void Bark()
+    {
+        Console.WriteLine("Dog barks.");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Dog myDog = new Dog();
+        myDog.MakeSound();
+        myDog.Bark();
+    }
+}
+```
+
+Question 28:
+
+```using System;
+
+class Animal
+{
+    public virtual void MakeSound()
+    {
+        Console.WriteLine("Animal makes a sound.");
+    }
+}
+
+class Dog : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Dog barks.");
+    }
+}
+
+class Cat : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Cat meows.");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Animal[] animals = new Animal[] { new Dog(), new Cat() };
+        foreach (Animal animal in animals)
+        {
+            animal.MakeSound();
+        }
+    }
+}
+```
+
+Question 29:
+
+```using System;
+
+interface IShape
+{
+    double Area();
+}
+
+class Circle : IShape
+{
+    double radius;
+    public Circle(double r) { radius = r; }
+    public double Area() { return Math.PI * radius * radius; }
+}
+
+class Square : IShape
+{
+    double side;
+    public Square(double s) { side = s; }
+    public double Area() { return side * side; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        IShape[] shapes = { new Circle(2.0), new Square(3.0) };
+        foreach (IShape shape in shapes)
+        {
+            Console.WriteLine("Area: " + shape.Area());
+        }
+    }
+}
+```
+
+Question 30:
+
+```using System;
+
+class Shape
+{
+    public virtual double Area()
+    {
+        return 0;
+    }
+}
+
+class Circle : Shape
+{
+    double radius;
+    public Circle(double r) { radius = r; }
+    public override double Area() { return Math.PI * radius * radius; }
+}
+
+class Square : Shape
+{
+    double side;
+    public Square(double s) { side = s; }
+    public override double Area() { return side * side; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Shape[] shapes = { new Circle(2.0), new Square(3.0) };
+        foreach (Shape shape in shapes)
+        {
+            Console.WriteLine("Area: " + shape.Area());
+        }
+    }
+}
+```
+
+Question 31:
+
+```using System;
+
+interface IShape
+{
+    double Area();
+}
+
+class Circle : IShape
+{
+    double radius;
+    public Circle(double r) { radius = r; }
+    public double Area() { return Math.PI * radius * radius; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        IShape myCircle = new Circle(2.0);
+        Console.WriteLine("Area: " + myCircle.Area());
+    }
+}
+```
+
+Question 32:
+
+```using System;
+
+interface IShape
+{
+    double Area();
+}
+
+class Circle : IShape
+{
+    double radius;
+    public Circle(double r) { radius = r; }
+    public double Area() { return Math.PI * radius * radius; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        IShape myCircle = new Circle(2.0);
+        Console.WriteLine("Area: " + myCircle.Area());
+        Console.WriteLine("Circumference: " + CalculateCircumference(myCircle));
+    }
+
+    static double CalculateCircumference(IShape shape)
+    {
+        // Assume all shapes have a Circumference method
+        return shape.Circumference();
+    }
+}
+```
+
+Question 33:
+
+```
+using System;
+
+class MyClass
+{
+    private int privateField = 10;
+
+    public void AccessPrivateField()
+    {
+        Console.WriteLine("Private Field Value: " + privateField);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        MyClass myObj = new MyClass();
+        myObj.AccessPrivateField();
+    }
+}
+
+```
+
+Question 34:
+
+```using System;
+
+class MyClass
+{
+    public int PublicField = 5;
+    private int PrivateField = 10;
+
+    public void AccessFields()
+    {
+        Console.WriteLine("Public Field: " + PublicField);
+        Console.WriteLine("Private Field: " + PrivateField);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        MyClass myObj = new MyClass();
+        myObj.AccessFields();
+    }
+}
+```
+
+Question 35:
+
+```using System;
+
+class Program
+{
+    static void Main()
+    {
+        int a = 10;
+        int b = 20;
+        int c = a + b;
+        Console.WriteLine("c = " + c);
+    }
+}
+```
+
+Question 36:
+
+```using System;
+
+class Program
+{
+    static void Main()
+    {
+        int a = 10;
+        int b = 5;
+        int c = a / b;
+        Console.WriteLine("c = " + c);
+    }
+}
+```
